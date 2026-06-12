@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>ChainLearn</title>
+    <link rel="icon" type="image/png" href="./ChainLearn.png" sizez="40x40">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./chainlearn.css">
+</head>
+
+<body>
+    <div class="starfield"></div>
+    <div class="toast-stack" id="toast-stack"></div>
+
+    <div class="app">
+
+        <!-- ═══ SIDEBAR ═══ -->
+        <aside class="sidebar">
+            <div class="sb-logo">
+                <div class="sb-logo-text">
+                    <div class="sb-logo-icon">
+                        <img src="./ChainLearn.png" alt="" style="width:30px;height:30px;" border-radius="10px">
+                    </div>
+                    ChainLearn
+                </div>
+                <div class="sb-logo-sub">Web3 Education Platform</div>
+            </div>
+
+            <div class="sb-xp">
+                <div class="xp-row">
+                    <span class="xp-label">Your Progress</span>
+                    <span class="xp-val" id="sb-xp-val">0 XP</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-fill" id="sb-xp-fill" style="width:0%"></div>
+                </div>
+                <div class="level-badge" id="sb-level">⚡ Level 1 — Newcomer</div>
+            </div>
+
+            <nav class="sb-nav">
+                <div class="nav-group-label">Courses</div>
+                <button class="nav-course active" id="nav-home" onclick="goHome(this)">
+                    <span class="nc-icon">🏠</span><span class="nc-label">Home</span>
+                </button>
+                <button class="nav-course" onclick="openCourse(0,this)" id="nc-0">
+                    <span class="nc-icon">🔗</span><span class="nc-label">Blockchain Basics</span>
+                    <span class="nc-prog" id="np-0">0/4</span>
+                </button>
+                <button class="nav-course" onclick="openCourse(1,this)" id="nc-1">
+                    <span class="nc-icon">💰</span><span class="nc-label">Crypto & Wallets</span>
+                    <span class="nc-prog" id="np-1">0/4</span>
+                </button>
+                <button class="nav-course" onclick="openCourse(2,this)" id="nc-2">
+                    <span class="nc-icon">🏦</span><span class="nc-label">DeFi Deep Dive</span>
+                    <span class="nc-prog" id="np-2">0/4</span>
+                </button>
+                <button class="nav-course" onclick="openCourse(3,this)" id="nc-3">
+                    <span class="nc-icon">🖼</span><span class="nc-label">NFTs Explained</span>
+                    <span class="nc-prog" id="np-3">0/3</span>
+                </button>
+                <button class="nav-course" onclick="openCourse(4,this)" id="nc-4">
+                    <span class="nc-icon">📜</span><span class="nc-label">Smart Contracts</span>
+                    <span class="nc-prog" id="np-4">0/4</span>
+                </button>
+                <button class="nav-course" onclick="openCourse(5,this)" id="nc-5">
+                    <span class="nc-icon">🛡</span><span class="nc-label">Web3 Security</span>
+                    <span class="nc-prog" id="np-5">0/3</span>
+                </button>
+                <div class="nav-group-label" style="margin-top:12px;">Reference</div>
+                <button class="nav-course" onclick="showView('glossary',this)">
+                    <span class="nc-icon">📖</span><span class="nc-label">Glossary</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- ═══ MAIN ═══ -->
+        <main class="main" id="main">
+
+            <!-- ── HOME ── -->
+            <div class="view active" id="view-home">
+                <div class="hero">
+                    <div class="hero-inner">
+                        <div>
+                            <div class="hero-tag">Start learning · Free · No wallet needed</div>
+                            <h1 class="hero-title">Master <span>Web3</span><br>from the ground up</h1>
+                            <p class="hero-desc">From Bitcoin basics to writing your first smart contract — structured
+                                lessons, quizzes, and real XP to track how far you've come.</p>
+                            <div class="hero-stats">
+                                <div class="hstat">
+                                    <div class="hstat-val">6</div>
+                                    <div class="hstat-label">Courses</div>
+                                </div>
+                                <div class="hstat">
+                                    <div class="hstat-val">22</div>
+                                    <div class="hstat-label">Lessons</div>
+                                </div>
+                                <div class="hstat">
+                                    <div class="hstat-val">60+</div>
+                                    <div class="hstat-label">Quiz questions</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chain-vis">
+                            <svg class="chain-svg" viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- blocks -->
+                                <rect x="8" y="60" width="50" height="40" rx="8" fill="#0d1828" stroke="#6c5ce7"
+                                    stroke-width="1.5" />
+                                <rect x="95" y="60" width="50" height="40" rx="8" fill="#0d1828" stroke="#6c5ce7"
+                                    stroke-width="1.5" />
+                                <rect x="182" y="60" width="50" height="40" rx="8" fill="#0d1828" stroke="#00d4ff"
+                                    stroke-width="1.5" />
+                                <!-- connectors -->
+                                <line x1="58" y1="80" x2="95" y2="80" stroke="#6c5ce7" stroke-width="1.5"
+                                    stroke-dasharray="4 3" />
+                                <line x1="145" y1="80" x2="182" y2="80" stroke="#6c5ce7" stroke-width="1.5"
+                                    stroke-dasharray="4 3" />
+                                <!-- hash text inside blocks -->
+                                <text x="33" y="77" font-family="monospace" font-size="6" fill="#8577ea"
+                                    text-anchor="middle">#00a1</text>
+                                <text x="33" y="88" font-family="monospace" font-size="5" fill="#3d5070"
+                                    text-anchor="middle">BLOCK</text>
+                                <text x="120" y="77" font-family="monospace" font-size="6" fill="#8577ea"
+                                    text-anchor="middle">#00a2</text>
+                                <text x="120" y="88" font-family="monospace" font-size="5" fill="#3d5070"
+                                    text-anchor="middle">BLOCK</text>
+                                <text x="207" y="77" font-family="monospace" font-size="6" fill="#00d4ff"
+                                    text-anchor="middle">#00a3</text>
+                                <text x="207" y="88" font-family="monospace" font-size="5" fill="#3d5070"
+                                    text-anchor="middle">LATEST</text>
+                                <!-- pulse dots -->
+                                <circle cx="207" cy="60" r="4" fill="#00d4ff" opacity="0.9">
+                                    <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.9;0;0.9" dur="2s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <!-- arrows on links -->
+                                <polygon points="91,77 95,80 91,83" fill="#6c5ce7" />
+                                <polygon points="178,77 182,80 178,83" fill="#6c5ce7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="sec-label">All Courses</div>
+                    <div class="course-grid" id="course-grid"></div>
+                </div>
+            </div>
+
+            <!-- ── COURSE VIEW ── -->
+            <div class="view" id="view-course">
+                <div class="content" style="padding-top:32px;">
+                    <div class="lesson-header">
+                        <button class="back-btn" onclick="goHome()">← Back</button>
+                        <div class="lesson-breadcrumb" id="course-breadcrumb"></div>
+                    </div>
+                    <div id="course-lessons"></div>
+                </div>
+            </div>
+
+            <!-- ── LESSON VIEW ── -->
+            <div class="view" id="view-lesson">
+                <div class="content" style="padding-top:32px;">
+                    <div class="lesson-header">
+                        <button class="back-btn" id="lesson-back-btn">← Course</button>
+                        <div class="lesson-breadcrumb" id="lesson-breadcrumb"></div>
+                        <div class="progress-dots" id="progress-dots"></div>
+                    </div>
+                    <div id="lesson-body"></div>
+                    <div class="lesson-nav" id="lesson-nav"></div>
+                </div>
+            </div>
+
+            <!-- ── QUIZ VIEW ── -->
+            <div class="view" id="view-quiz">
+                <div class="content" style="padding-top:32px;">
+                    <div class="lesson-header">
+                        <button class="back-btn" id="quiz-back-btn">← Lesson</button>
+                    </div>
+                    <div id="quiz-body"></div>
+                </div>
+            </div>
+
+            <!-- ── GLOSSARY ── -->
+            <div class="view" id="view-glossary">
+                <div class="page-hd">
+                    <div class="page-title">Glossary</div>
+                    <div class="page-sub">Every Web3 term you need — in plain English</div>
+                </div>
+                <div class="content" style="padding-top:0;">
+                    <div class="glossary-grid" id="glossary-grid"></div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <div class="bottom-nav">
+        <div class="bn-inner">
+            <button class="bn-item active" id="bn-home" onclick="goHome();     setBottomNav('bn-home')">
+                <div class="bn-icon">🏠</div>Home
+            </button>
+            <button class="bn-item" id="bn-courses" onclick="goHome();     setBottomNav('bn-home')">
+                <div class="bn-icon">📚</div>Courses
+            </button>
+            <button class="bn-item" id="bn-glossary" onclick="showView('glossary'); setBottomNav('bn-glossary')">
+                <div class="bn-icon">📖</div>Glossary
+            </button>
+        </div>
+    </div>
+
+    <script src="./chainlearn.js">
+
+    </script>
+</body>
+
+</html>
